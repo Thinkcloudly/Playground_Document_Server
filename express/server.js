@@ -30,7 +30,8 @@ router.get("/instructions-module/:module", async (req, res) => {
   fs.readFile(`express/instructionsModule/${module}.md`, (e, data) => {
     if (e) {
       if (e.message?.includes("no such file or directory")) {
-        res.status(404).json({ message: e.message });
+        console.error(e);
+        res.status(404).json({ message: "Module not found"+e.message });
         return;
       }
       console.error(e);
