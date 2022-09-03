@@ -1,2 +1,10 @@
+# example netlify.toml
 [build]
-  functions = "functions"
+  command = "npm install && npm run build"
+  functions = "functions" #  netlify-lambda reads this
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET,PUT,POST,DELETE"
