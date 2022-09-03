@@ -8,3 +8,8 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "Content-Type"
     Access-Control-Allow-Methods = "GET,PUT,POST,DELETE"
+
+[[redirects]]
+to="/.netlify/functions/api/:splat"
+from="/*"
+status=200

@@ -18,19 +18,6 @@ router.get("/", (req, res) => {
   });
 });
 
-app.use(`/.netlify/functions/api`, router);
-
-module.exports = app;
-module.exports.handler = serverless(app);
-// =================================================
-
-
-
-
-
-
-
-
 
 
 
@@ -54,3 +41,18 @@ router.get("/instructions-module/:module", async (req, res) => {
     res.status(200).json(data.toString());
   });
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);
+app.use(`/.netlify/functions/api`, router);
+
+
+// =================================================
+
+
+
+
+
+
+
+
