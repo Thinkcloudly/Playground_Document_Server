@@ -1,7 +1,6 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const cors = require("cors");
-require("dotEnv").config();
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
