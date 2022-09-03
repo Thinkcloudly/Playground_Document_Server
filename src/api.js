@@ -3,6 +3,8 @@ const cors = require("cors");
 require("dotEnv").config();
 const app = express();
 const bodyParser = require("body-parser");
+const serverless = require('serverless-http');
+const router = express.Router();
 const fs = require("fs");
 
 // Applying middlewares to app
@@ -11,18 +13,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 8000;
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).json("Welcome! This route is working");
 })
 
-app.get("/instructions-module/:module", async (req, res) => {
+router.get("/instructions-module/:module", async (req, res) => {
   const { module } = req.params;
-  fs.readFile(__dirname + `/instructionsModule/${module}.md`, (e, data) => {
+  console.log(__dirname);
+  fs.readFile(`src/instructionsModule/${module}.md`, (e, data) => {
     if (e) {
       if (e.message?.includes("no such file or directory")) {
-        res.status(404).json({ message: "Module not found" });
+        res.status(404).json({ message: e.message });
         return;
       }
+      console.error(e);
       res.status(500).json({ error: e.message });
       return;
     }
@@ -30,7 +34,5 @@ app.get("/instructions-module/:module", async (req, res) => {
   });
 });
 
-// Running server on port 8000
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.use('/.netlify/functions/api',router);
+module.exports.handler = serverless(app)
