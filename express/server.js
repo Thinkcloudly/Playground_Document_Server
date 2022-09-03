@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 
 router.get("/instructions-module/:module", async (req, res) => {
   const { module } = req.params;
-  fs.readFile(__dirname + `/instructionsModule/${module}.md`, (e, data) => {
+  fs.readFile(`express/instructionsModule/${module}.md`, (e, data) => {
     if (e) {
       if (e.message?.includes("no such file or directory")) {
         res.status(404).json({ message: e.message });
