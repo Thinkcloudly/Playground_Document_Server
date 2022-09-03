@@ -1,31 +1,22 @@
 const express = require("express");
-const serverless = require("serverless-http");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
 const app = express();
-const router = express.Router();
 
 // Applying middlewares to app
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "Success"
-  });
-});
 
 
-
-
-router.get("/health", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json("Welcome! This route is working");
 })
 
-router.get("/instructions-module/:module", async (req, res) => {
+app.get("/instructions-module/:module", async (req, res) => {
   const { module } = req.params;
   console.log(__dirname);
   fs.readFile(`src/instructionsModule/${module}.md`, (e, data) => {
@@ -42,15 +33,7 @@ router.get("/instructions-module/:module", async (req, res) => {
   });
 });
 
-module.exports = app;
-module.exports.handler = serverless(app);
-app.use(`/.netlify/functions/api`, router);
-
-
-// =================================================
-
-
-
+app.listen(8000, () => console.log("Server is running on port 8000"))
 
 
 
