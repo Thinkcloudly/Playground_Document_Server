@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 8000;
 
+app.get("/", (req, res) => {
+  res.status(200).json("Welcome! This route is working");
+})
+
 app.get("/instructions-module/:module", async (req, res) => {
   const { module } = req.params;
   fs.readFile(__dirname + `/instructionsModule/${module}.md`, (e, data) => {
