@@ -1,19 +1,41 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const cors = require("cors");
 require("dotEnv").config();
-const app = express();
 const bodyParser = require("body-parser");
-const serverless = require('serverless-http');
-const router = express.Router();
 const fs = require("fs");
+
+const app = express();
+const router = express.Router();
 
 // Applying middlewares to app
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const PORT = process.env.PORT || 8000;
 
 router.get("/", (req, res) => {
+  res.json({
+    message: "Success"
+  });
+});
+
+app.use(`/.netlify/functions/api`, router);
+
+module.exports = app;
+module.exports.handler = serverless(app);
+// =================================================
+
+
+
+
+
+
+
+
+
+
+
+router.get("/health", (req, res) => {
   res.status(200).json("Welcome! This route is working");
 })
 
@@ -33,7 +55,3 @@ router.get("/instructions-module/:module", async (req, res) => {
     res.status(200).json(data.toString());
   });
 });
-
-app.use('/.netlify/functions/api',router);
-module.exports = app;
-module.exports.handler = serverless(app)
