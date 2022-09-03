@@ -18,8 +18,7 @@ app.get("/", (req, res) => {
 
 app.get("/instructions-module/:module", async (req, res) => {
   const { module } = req.params;
-  console.log(__dirname);
-  fs.readFile(`src/instructionsModule/${module}.md`, (e, data) => {
+  fs.readFile(__dirname + `/instructionsModule/${module}.md`, (e, data) => {
     if (e) {
       if (e.message?.includes("no such file or directory")) {
         res.status(404).json({ message: e.message });
