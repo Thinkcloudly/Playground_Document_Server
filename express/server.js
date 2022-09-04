@@ -29,7 +29,8 @@ router.get("/instructions-module/:module", async (req, res) => {
   try {
     const { module } = req.params;
     console.log(__dirname, '==================')
-    fs.readFile(`${module}.md`, function (e, data) {
+    const filePath = path.resolve(`public/${module}.md`);
+    fs.readFile(filePath, function (e, data) {
       if (e) {
         console.error(e);
         if (e.message?.includes("no such file or directory")) {
