@@ -1,1 +1,0 @@
-### Supereme Azure Data - Outer
