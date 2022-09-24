@@ -8,6 +8,7 @@
 ![attach volume](https://user-images.githubusercontent.com/84078733/192093359-b219ab8c-bf48-4be9-9945-130cf4c8b248.png)
 
 2. Now, select an instance, just pick the instance of your choice. When you select the instance and click Attach, the volume will be shown as in-use. 
+
 ![attached](https://user-images.githubusercontent.com/84078733/192094189-a997d4a2-f90f-4193-a450-e0211d7d3f58.png)
 
 
