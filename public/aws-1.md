@@ -1,4 +1,4 @@
-### My Favourite AWS Course
+### EBS & EC2
 
 ## Some instructions
 
