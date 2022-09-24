@@ -11,5 +11,5 @@
 ![attached](https://user-images.githubusercontent.com/84078733/192094189-a997d4a2-f90f-4193-a450-e0211d7d3f58.png)
 
 
-### Click on Validate.
+#### Click on Validate.
 ### Please delete your resources after validating and performing this lab.
