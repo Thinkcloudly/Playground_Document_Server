@@ -1,4 +1,4 @@
-### EC2 Web Hosting
+### EC2 Web Access
 
 ## Some instructions
 
