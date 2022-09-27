@@ -6,6 +6,6 @@
 
 2.	Open the existing group. Click on Action and then Edit Inbound rule. ![edit inbound](https://user-images.githubusercontent.com/84078733/192541619-f270dab3-d763-431f-8cbd-7e71d757b0e4.png)
 
-3.	Click on Add Rule. Add **HTTP** rule and select source as **Anywhere**. Now, save the rule. ![http](https://user-images.githubusercontent.com/84078733/192542192-fd109dce-22f6-4ebb-9bf8-2c7eda90d6ad.png)
+3.	Click on Add Rule. Add **HTTP** rule and select source as **Anywhere**. Now, save the rule. ![http](https://user-images.githubusercontent.com/84078733/192578071-2ded33e7-8210-4e7c-b289-25a17bd99d06.png)
 
 #### Please delete your resources after validating and performing this lab.
