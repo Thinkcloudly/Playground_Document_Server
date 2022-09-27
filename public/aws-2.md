@@ -8,4 +8,6 @@
 
 3.	Click on Add Rule. Add **HTTP** rule and select source as **Anywhere**. Now, save the rule. ![http](https://user-images.githubusercontent.com/84078733/192578071-2ded33e7-8210-4e7c-b289-25a17bd99d06.png)
 
+### Click on Validate
+
 #### Please delete your resources after validating and performing this lab.
