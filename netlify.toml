@@ -3,4 +3,4 @@
   functions = "functions"
 
   [functions]
-    included_files = ["public/**"]
+    included_files = ["public/**","index.html"]
