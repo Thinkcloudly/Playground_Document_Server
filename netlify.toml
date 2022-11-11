@@ -2,3 +2,6 @@
   command = "npm install && npm run build"
   functions = "functions"
   publish = "public"
+
+[functions]
+  included_files = ["public/**"]
