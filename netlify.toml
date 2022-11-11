@@ -4,8 +4,4 @@
 
   [functions]  
 	included_files = ["public/*.md"]
-
-  [production]
-    GOOGLE_SERVICE_ACCOUNT_EMAIL=GOOGLE_SERVICE_ACCOUNT_EMAIL
-    GOOGLE_PRIVATE_KEY=GOOGLE_PRIVATE_KEY
-    GOOGLE_SCOPE1=GOOGLE_SCOPE1
+  
