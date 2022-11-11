@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const serverless = require("serverless-http");
@@ -6,6 +7,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
+const greetingsController = require("./controllers/baseController");
+const fetchStudentDataFromGoogleSheetController = require("./controllers/fetchStudentDataFromGoogleSheetController");
 
 // Applying middlewares to app
 app.use(cors());
@@ -21,14 +24,9 @@ const router = express.Router();
 // router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post("/", (req, res) => res.json({ postBody: req.body }));
 
-router.get("/", (req, res) => {
-  res.status(200).json("Welcome! This route is working");
-});
-
 router.get("/instructions-module/:module", async (req, res) => {
   try {
     const { module } = req.params;
-    console.log(__dirname, '==================')
     const filePath = path.resolve(`public/${module}.md`);
     fs.readFile(filePath, function (e, data) {
       if (e) {
@@ -49,10 +47,14 @@ router.get("/instructions-module/:module", async (req, res) => {
   }
 });
 
+router.get('/', greetingsController);
+router.get('/student-data', fetchStudentDataFromGoogleSheetController)
+
 app.use("/.netlify/functions/server", router); // path must route to lambda
 app.use("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
 
 module.exports = app;
 module.exports.handler = serverless(app);
 
-app.listen(8000, () => console.log("Server is running on port 8000"));
+const PORT = process.env.PORT;
+app.listen(process.env.PORT, () => console.log(`Server is running on port ${PORT}`));

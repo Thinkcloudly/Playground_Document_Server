@@ -1,3 +1,5 @@
 const app = require('./express/server');
+require('dotenv').config();
 
-app.listen(8800, () => console.log('Server listening on port 8800'));
+// const PORT = process.env.PORT;
+// app.listen(process.env.PORT, () => console.log(`Server is running on port ${PORT}`));
