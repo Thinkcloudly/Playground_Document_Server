@@ -18,11 +18,11 @@
 		"dotenv": "^16.0.3",
 		"express": "^4.18.1",
 		"googleapis": "^105.0.0",
-		"webpack": "^5.74.0",
+		"netlify-lambda": "^2.0.15",
 		"serverless-http": "^3.0.1"
 	},
 	"devDependencies": {
-		"netlify-lambda": "^2.0.15",
+		"webpack": "^5.74.0",
 		"nodemon": "^2.0.19",
 		"webpack-cli": "^4.10.0"
 	}
