@@ -50,8 +50,9 @@ router.get("/instructions-module/:module", async (req, res) => {
 router.get("/", greetingsController);
 router.get("/student-data", fetchStudentDataFromGoogleSheetController);
 
-app.use("/.netlify/functions/server", router); // path must route to lambda
-app.use("/", (req, res) => res.sendFile(path.join("index.html")));
+app.use("/", router); // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
+
+// app.listen(process.env.PORT, () => console.log(`Server is running on port ${PORT}`));
