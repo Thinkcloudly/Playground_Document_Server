@@ -53,18 +53,21 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: AWS_ID
+        - name: PORT
+          value: 80
+        - name: GOOGLE_SERVICE_ACCOUNT_EMAIL
           valueFrom:
             secretKeyRef:
-              name: aws-credentials
-              key: aws_id
-
-        - name: AWS_SECRET
+              name: gcp-credentials
+              key: GOOGLE_SERVICE_ACCOUNT_EMAIL
+        - name: GOOGLE_PRIVATE_KEY
           valueFrom:
             secretKeyRef:
-              name: aws-credentials
-              key: aws_secret
-        - name: AWS_ENV_REGION
-          value: us-east-1
-        
+              name: gcp-credentials
+              key: GOOGLE_PRIVATE_KEY
 
+        - name: GOOGLE_SCOPE1
+          valueFrom:
+            secretKeyRef:
+              name: gcp-credentials
+              key: GOOGLE_SCOPE1
