@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY_URL }}/clockbox:$GITHUB_RUN_ID
+          tags: ${{ secrets.DOCKER_REGISTRY_URL }}/document_server:latest

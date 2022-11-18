@@ -1,0 +1,70 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: document_server
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+        - pathType: Prefix
+          path: "/document_server/"
+          backend:
+            service:
+              name: document_server
+              port:
+                number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: document_server
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: document_server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: document_server
+  namespace: default
+  labels:
+    app: document_server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: document_server
+  template:
+    metadata:
+      labels:
+        app: document_server
+    spec:
+      containers:
+      - name: document_server
+        image: "071688540161.dkr.ecr.us-east-1.amazonaws.com/document_server:latest"
+        ports:
+        - containerPort: 80
+        env:
+        - name: AWS_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_id
+
+        - name: AWS_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret
+        - name: AWS_ENV_REGION
+          value: us-east-1
+        
+
