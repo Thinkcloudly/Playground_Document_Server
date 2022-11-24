@@ -1,0 +1,1 @@
+kubectl patch -n thinkcloudly-lab deployment "document-server" -p "{\"spec\": {\"template\": {\"metadata\": { \"labels\": {  \"redeploy\": \"$(date +%s)\"}}}}}"

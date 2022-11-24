@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js!</h1>');
-  res.end();
+router.get("/", (req, res) => {
+	res.writeHead(200, { "Content-Type": "text/html" });
+	res.write("<h1>Hello from Express.js!</h1>");
+	res.end();
 });
 // router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post("/", (req, res) => res.json({ postBody: req.body }));
@@ -27,7 +27,8 @@ router.post("/", (req, res) => res.json({ postBody: req.body }));
 router.get("/instructions-module/:module", async (req, res) => {
 	try {
 		const { module } = req.params;
-		const filePath = path.resolve(`./public/${module}.md`);
+		const filePath = path.resolve(`${__dirname}/public/${module}.md`);
+		console.log(filePath);
 		fs.readFile(filePath, function (e, data) {
 			if (e) {
 				console.error(e);
@@ -50,7 +51,7 @@ router.get("/instructions-module/:module", async (req, res) => {
 router.get("/", greetingsController);
 router.get("/student-data", fetchStudentDataFromGoogleSheetController);
 
-app.use("/document_server/", router); // path must route to lambda
+app.use("/document-server/", router); // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
