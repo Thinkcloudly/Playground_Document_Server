@@ -10,10 +10,10 @@ spec:
   # ingressClassName: nginx
   tls:
   - hosts:
-    - backend.thinkbizly.com
+    - backend.thinkcloudly.com
     secretName: backend-tls-prod
   rules:
-  - host: backend.thinkbizly.com
+  - host: backend.thinkcloudly.com
     http:
       paths:
         - pathType: Prefix
